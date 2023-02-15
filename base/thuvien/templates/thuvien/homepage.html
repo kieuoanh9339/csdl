@@ -1,0 +1,133 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư viện PTIT</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'thuvien/css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'thuvien/css/homepage.css' %}">
+</head>
+
+<body>
+    <header>
+        <div class="row">
+            <div>
+                <h2 class="siteName">PTIT Library</h2>
+            </div>
+            <div class="search">
+                <form class="form" action="/timkiem">
+                    <div class="form-element">
+                        <input type="text" name="search" placeholder="Tìm kiếm...">
+                    </div>
+                </form>
+            </div>
+            <div class="user">
+                <div onclick="viewCart()" class="cart">
+                        <span class="material-icons-round">shopping_cart</span>
+                        <span class="count">0</span>
+                </div>
+                <div class="userIcon" onclick="userMenuToggle()">
+                    <span class="material-icons-round icon">account_circle</span>
+                    <span>{{ user.ten }}</span>
+                </div>
+                <div class="userMenu">
+                    <ul>
+                        <li><a href="/account">Tài khoản</a></li>
+                        <li><a href="/history">Lịch sử mượn</a></li>
+                        <li><a href="/logout">Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="body">
+        <div class="banner">
+            <div class="row">
+                <div class="banner-content">
+                    <h1>Thư viện PTIT</h1>
+                    <p>Thư viện được thành lập vào năm 2021</p>
+                </div>
+                <div class="banner-image">
+                    <img src="{% static 'thuvien/img/banner.png' %}" alt="banner">
+                </div>
+            </div>
+        </div>
+
+        <div class="books">
+            <h3>Sách hiện có</h3>
+            <div class="row">
+                
+                {% if sach %}
+                    {% for s in sach %}
+                        <div class="col-3">
+                            <div class="book-card" onclick="showBookInfo('{{ s.maSach }}')">
+                                <div class="book-image">
+                                    <img src="{% static 'thuvien/img/book.png' %}" alt="book">
+                                </div>
+                                <div class="book-info">
+                                    <b>{{ s.tenSach }}</b>
+                                    <small>{{ s.tacGia }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+        <div id="modal__sachInfo" class="modal-overlay">
+            <div class="modal">
+                <div class="header">
+                    <h2>Thông tin về sách</h2>
+                </div>
+                <div class="body">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Mã sách</td>
+                                <td class="maSach">Mã sách</td>
+                            </tr>
+                            <tr>
+                                <td>Tên sách</td>
+                                <td class="tenSach">Tên sách</td>
+                            </tr>
+                            <tr>
+                                <td>Tác giả</td>
+                                <td class="tacGia">Tác giả</td>
+                            </tr>
+                            <tr>
+                                <td>Thể loại</td>
+                                <td class="theLoai">Thể loại</td>
+                            </tr>
+                            <tr>
+                                <td>Ngôn ngữ</td>
+                                <td class="ngonNgu">Ngôn ngữ</td>
+                            </tr>
+                            <tr>
+                                <td>Số lượng hiện có</td>
+                                <td class="soLuong">Số lượng</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="footer">
+                    <button id="btnAddToCart" book-id onclick="addToCart()" class="btn">Thêm vào giỏ sách</button>
+                    <button onclick="hideModal()" class="btn btn-gray">Đóng</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="{% static 'thuvien/js/theme.js' %}"></script>
+    <script src="{% static 'thuvien/js/core.js' %}"></script>
+    <script src="{% static 'thuvien/js/homepage.js' %}"></script>
+</body>
+
+</html>

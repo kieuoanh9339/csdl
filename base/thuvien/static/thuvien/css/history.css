@@ -1,0 +1,15 @@
+.history-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 10px;
+}
+
+.history-area .item {
+    max-width: 1300px;
+    width: 100%;
+}
+
+.history-area .item .item-header {
+    margin-bottom: 30px;
+}

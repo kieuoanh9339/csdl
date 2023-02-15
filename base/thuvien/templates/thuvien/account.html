@@ -1,0 +1,129 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư viện PTIT</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'thuvien/css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'thuvien/css/homepage.css' %}">
+    <link rel="stylesheet" href="{% static 'thuvien/css/account.css' %}">
+</head>
+
+<body>
+    <header>
+        <div class="row">
+            <div>
+                <h2 class="siteName">PTIT Library</h2>
+            </div>
+            <div class="user">
+                <div onclick="viewCart()" class="cart">
+                    <span class="material-icons-round">shopping_cart</span>
+                    <span class="count">0</span>
+                </div>
+                <div class="userIcon" onclick="userMenuToggle()">
+                    <span class="material-icons-round icon">account_circle</span>
+                    <span>{{ user.ten }}</span>
+                </div>
+                <div class="userMenu">
+                    <ul>
+                        <li><a href="/account">Tài khoản</a></li>
+                        <li><a href="/history">Lịch sử mượn</a></li>
+                        <li><a href="/logout">Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="body">
+        <div class="banner">
+            <div class="row">
+                <div class="banner-content">
+                    <h1>Thư viện PTIT</h1>
+                    <p>Thư viện được thành lập vào năm 2021</p>
+                </div>
+                <div class="banner-image">
+                    <img src="{% static 'thuvien/img/banner.png' %}" alt="banner">
+                </div>
+            </div>
+        </div>
+
+        <div class="account-area">
+            <div class="item">
+                <div class="item-header">
+                    <h2>Thông tin tài khoản</h2>
+                </div>
+                <div class="item-body">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Mã sinh viên</td>
+                                <td>
+                                    <div class="form-element">
+                                        <input type="username" name="masv" placeholder="Mã sinh viên..." value="{{user.masv}}">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Họ và tên</td>
+                                <td>
+                                    <div class="form-element">
+                                        <input type="text" name="ten" placeholder="Họ và tên..." value="{{user.ten}}">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>
+                                    <div class="form-element">
+                                        <input type="email" name="email" placeholder="Email..." value="{{user.email}}">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Năm sinh</td>
+                                <td>
+                                    <div class="form-element">
+                                        <input type="number" name="namSinh" placeholder="Năm sinh..." value="{{user.namSinh}}">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mật khẩu</td>
+                                <td>
+                                    <div class="form-element">
+                                        <input type="password" name="matkhau" placeholder="Họ và tên..." value="{{user.matkhau}}">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-element align-right">
+                                        <button id="btnSubmit" class="btn">Lưu thay đổi</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+
+    <script src="{% static 'thuvien/js/theme.js' %}"></script>
+    <script src="{% static 'thuvien/js/core.js' %}"></script>
+    <script src="{% static 'thuvien/js/account.js' %}"></script>
+</body>
+
+</html>

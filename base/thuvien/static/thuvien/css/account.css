@@ -1,0 +1,27 @@
+.account-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 10px;
+}
+
+.account-area .item-header {
+    padding: 30px 0;
+    text-align: center;
+}
+
+.account-area table {
+    width: 600px;
+}
+
+table td:first-child {
+    font-weight: 500;
+}
+
+table td {
+    border: none;
+}
+
+.item-header {
+    color: #413b89;
+}
